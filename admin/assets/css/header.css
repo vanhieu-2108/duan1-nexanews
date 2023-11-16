@@ -1,0 +1,99 @@
+.main__content {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.aside {
+  padding: 10px;
+  grid-column: span 2 / span 2;
+  height: 100vh;
+  background-color: #f6f7fc;
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.aside__logo {
+  width: 60%;
+  object-fit: cover;
+  transform: translateX(25%);
+}
+
+.aside__group-avatar {
+  margin-left: 6px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.aside__avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.aside__group-right {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aside__text {
+  color: gray;
+}
+
+.aside__name {
+  font-weight: bold;
+}
+
+.aside__list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aside__link {
+  color: #333;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 20px;
+  padding-left: 6px;
+  position: relative;
+  font-size: 1.4rem;
+}
+
+.aside__link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid #f6f7fc;
+  transform: translateY(24%);
+}
+
+.aside__link:hover {
+  background-color: #0051d6;
+  color: #fff;
+}
+
+.aside__link:hover .aside__icon {
+  background-color: #fff;
+  color: #0051d6;
+}
+
+.aside__icon {
+  padding: 10px;
+  background-color: rgb(128, 128, 128, 0.2);
+  border-radius: 4px;
+}

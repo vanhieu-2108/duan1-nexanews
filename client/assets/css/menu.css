@@ -1,0 +1,55 @@
+.container {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.menu__heading {
+  margin-top: 40px;
+  font-size: 4rem;
+  text-align: center;
+  font-weight: 600;
+  color: #c1a17b;
+}
+
+.menu__tabs {
+  width: 100%;
+  max-width: 60%;
+  margin: 60px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu__tab-item {
+  font-size: 2.4rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.menu__tab-item.active {
+  color: #c1a17b;
+}
+
+.menu__products {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  display: none;
+}
+
+.menu__products.active {
+  display: grid;
+}
+
+.menu__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu__sub-heading {
+  margin-top: 10px;
+  font-size: 2rem;
+  font-weight: 600;
+}
