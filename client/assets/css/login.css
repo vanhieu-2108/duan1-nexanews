@@ -30,7 +30,7 @@
 .message-error {
   min-height: 12px;
   color: red;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .form-main .title {
@@ -41,6 +41,7 @@
 
 .form-main label {
   margin-bottom: 5px;
+  font-size: 1.8rem;
 }
 
 .form-main input {

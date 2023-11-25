@@ -4,79 +4,42 @@
             <h1 class="menu__heading">
                 Menu
             </h1>
-            <div class="menu__tabs">
-                <div class="menu__tab-item active">
-                    Món Khai Vị
-                </div>
-                <div class="menu__tab-item">
-                    Đồ Uống
-                </div>
-                <div class="menu__tab-item">
-                    Món Chính
-                </div>
-                <div class="menu__tab-item">
-                    Món Tráng Miệng
-                </div>
-            </div>
+            <form action="" method="POST" class="form-search">
+                <input value="<?php echo isset($_POST['search']) ? htmlspecialchars($_POST['search']) : '' ?>" placeholder="Tìm kiếm món ăn" type="text" name="search" class="input-search">
+                <button class="icon-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
             <div class="menu__wrapper">
-                <div class="menu__products active">
-                    <?php for ($i = 0; $i < 3; $i++) { ?>
-                        <div class="menu__product">
-                            <img src="https://source.unsplash.com/random" alt="" class="menu__img">
-                            <h2 class="menu__sub-heading">
-                                Lẩu Sườn Kim Chi
-                            </h2>
-                        </div>
-                    <?php } ?>
-                </div>
                 <div class="menu__products">
-                    <?php for ($i = 0; $i < 3; $i++) { ?>
-                        <div class="menu__product">
-                            <img src="https://source.unsplash.com/random" alt="" class="menu__img">
-                            <h2 class="menu__sub-heading">
-                                Lẩu Bò Kim Chi
-                            </h2>
-                        </div>
-                    <?php } ?>
-                </div>
-                <div class="menu__products">
-                    <?php for ($i = 0; $i < 3; $i++) { ?>
-                        <div class="menu__product">
-                            <img src="https://source.unsplash.com/random" alt="" class="menu__img">
-                            <h2 class="menu__sub-heading">
-                                Lẩu Hải Sản Kim Chi
-                            </h2>
-                        </div>
-                    <?php } ?>
-                </div>
-                <div class="menu__products">
-                    <?php for ($i = 0; $i < 3; $i++) { ?>
-                        <div class="menu__product">
-                            <img src="https://source.unsplash.com/random" alt="" class="menu__img">
-                            <h2 class="menu__sub-heading">
-                                Lẩu Tôm Kim Chi
-                            </h2>
-                        </div>
-                    <?php } ?>
+                    <?php
+                    if (isset($_POST['search'])) {
+                        $search = $_POST['search'];
+                        $rows = searchMonAnByName($search);
+                    } else {
+                        $rows = getAllMonAn('DESC');
+                    }
+                    if (is_array($rows)) {
+                        foreach ($rows as $row) {
+                            extract($row);
+                            echo '<div class="menu__product">
+                                    <div class="wrap-img">
+                                        <a href="/?act=detail&ma_mon_an=' . $ma_mon_an . '">
+                                            <img src="/uploads/' . $img . '" alt="" class="menu__img">
+                                        </a>
+                                    </div>
+                                    <h2 class="menu__sub-heading">
+                                        <a style="color: black" href="/?act=detail&ma_mon_an=' . $ma_mon_an . '">
+                                        ' . $ten_mon . '
+                                        </a>
+                                    </h2>
+                                    <p class="menu-price">' . formatCurrency($gia_mon) . ' đ</p>
+                                </div>';
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    window.addEventListener('load', () => {
-        const $ = document.querySelector.bind(document)
-        const $$ = document.querySelectorAll.bind(document)
-        const tabs = $$('.menu__tab-item')
-        const panes = $$('.menu__products');
-        [...tabs].forEach((tab, index) => {
-            tab.addEventListener('click', () => {
-                const pane = panes[index];
-                $('.menu__tab-item.active').classList.remove('active');
-                $('.menu__products.active').classList.remove('active');
-                tab.classList.add('active');
-                pane.classList.add('active');
-            })
-        })
-    })
-</script>

@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+.container {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.sub-heading {
+  margin-top: 40px;
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #c1a17b;
+  font-family: "Pacifico", cursive;
+}
+.group-info {
+  margin-top: 20px;
+  max-width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.group-info p {
+  margin-top: 20px;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: gray;
+}
+
+.table {
+  width: 70%;
+  margin: 80px auto 80px;
+}
+
+table,
+tr,
+th,
+td {
+  padding: 10px;
+  border: 1px solid gray;
+  border-collapse: collapse;
+  vertical-align: middle;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #ccc;
+}
+
+.form-group {
+  margin-top: 40px;
+  max-width: 20%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 2rem;
+  font-weight: 700;
+  color: gray;
+}
+
+.form-control {
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: #c1a27b51;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  width: 160px;
+  margin-top: 20px;
+  padding: 16px 0;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: #c1a17b;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: rgba(193, 162, 123, 0.8);
+}

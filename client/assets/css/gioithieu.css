@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.heading {
+  text-align: center;
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #c1a17b;
+  margin: 20px 0;
+}
+
+.desc {
+  text-align: justify;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: gray;
+  margin: 20px 0;
+  line-height: 1.6;
+}

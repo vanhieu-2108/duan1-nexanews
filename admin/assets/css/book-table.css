@@ -1,0 +1,37 @@
+table,
+.heading {
+  width: 80%;
+}
+
+.table-body p {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.table-body tr:hover td {
+  background-color: #ccc;
+}
+
+.table {
+  width: 70%;
+  margin: 80px auto 80px;
+}
+
+table,
+tr,
+th,
+td {
+  padding: 10px;
+  border: 1px solid gray;
+  border-collapse: collapse;
+  vertical-align: middle;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #ccc;
+}

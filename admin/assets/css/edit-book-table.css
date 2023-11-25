@@ -106,3 +106,26 @@
   align-items: center;
   gap: 10px;
 }
+
+.table {
+  width: calc(100% - 20px);
+}
+
+table,
+tr,
+th,
+td {
+  padding: 10px;
+  border: 1px solid gray;
+  border-collapse: collapse;
+  vertical-align: middle;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #ccc;
+}

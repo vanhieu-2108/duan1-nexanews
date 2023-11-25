@@ -7,6 +7,7 @@ function pdo_mutaion($sql)
         global $conn;
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
+        return $conn->lastInsertId();
     } catch (PDOException $e) {
         throw $e;
     } finally {

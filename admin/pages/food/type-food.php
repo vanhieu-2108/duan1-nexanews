@@ -7,7 +7,7 @@
         </div>
         <div class="form-group">
             <label for="" class="form-label">Tên Loại Món</label>
-            <input type="text" name="tenloai" class="form-control">
+            <input required type="text" name="tenloai" class="form-control">
         </div>
         <p style="margin-left: 20px; color: green; font-weight: bold;"><?php echo isset($thongbao) ? $thongbao : ''; ?></p>
         <button class="btn" name="add-type-food">Thêm</button>

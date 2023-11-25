@@ -12,18 +12,34 @@
     if (isset($_GET['act'])) {
         $act = $_GET['act'];
         switch ($act) {
-            case 'create-book-table':
-                echo '<link rel="stylesheet" href="/admin/assets/css/create-book-table.css">';
+            case 'edit-book-table':
+            case 'insert-book-table':
+            case 'delete-menu':
+                echo '<link rel="stylesheet" href="/admin/assets/css/edit-book-table.css">';
                 break;
             case 'type-food':
             case 'edit-type-food':
             case 'food':
+            case 'edit-food':
                 echo '<link rel="stylesheet" href="/admin/assets/css/type-food.css">';
                 break;
             case 'list-type-food':
             case 'delete-list-type':
             case 'update-type-food':
+            case 'list-food':
+            case 'update-food':
+            case 'delete-food':
+            case 'list-table':
+            case 'update-table':
+            case 'list-user':
+            case 'list-comment':
+            case 'detail-comment':
                 echo '<link rel="stylesheet" href="/admin/assets/css/list-type-food.css">';
+                break;
+            case 'book-table':
+            case 'update-book-table':
+                echo '<link rel="stylesheet" href="/admin/assets/css/list-type-food.css">';
+                echo '<link rel="stylesheet" href="/admin/assets/css/book-table.css">';
                 break;
             default:
                 echo '<link rel="stylesheet" href="/admin/assets/css/type-food.css">';
@@ -37,13 +53,18 @@
 <div class="main__content">
     <aside class="aside">
         <!-- Aside Logo -->
-        <img src="/imgs/logo-nexanews.png" alt="" class="aside__logo">
+        <img src="/imgs/nexa-logo.jpg" alt="" class="aside__logo">
         <!-- Aside Avatar -->
         <div class="aside__group-avatar">
-            <img src="https://source.unsplash.com/random" alt="" class="aside__avatar">
+            <?php
+
+            $anh = $_SESSION['user']['img'];
+
+            ?>
+            <img src="/uploads/<?php echo $anh ?>" alt="" class="aside__avatar">
             <div class="aside__group-right">
                 <p class="aside__text">Hello,</p>
-                <p class="aside__name">LeVanHieu</p>
+                <p class="aside__name"><?php echo isset($_SESSION['user']['ten_kh']) ? htmlspecialchars($_SESSION['user']['ten_kh']) : '' ?></p>
             </div>
         </div>
         <!-- Aside List -->
@@ -65,7 +86,7 @@
                 </a>
             </li>
             <li class="aside__item">
-                <a href="#!" class="aside__link">
+                <a href="/admin/?act=table" class="aside__link">
                     <div class="aside__icon">
                         <i class="fa-solid fa-bars-staggered"></i>
                     </div>
@@ -73,41 +94,41 @@
                 </a>
             </li>
             <li class="aside__item">
-                <a href="#!" class="aside__link">
+                <a href="/admin/?act=book-table" class="aside__link">
                     <div class="aside__icon">
                         <i class="fa-solid fa-book"></i>
                     </div>
-                    Danh Sách Đặt
+                    Danh Sách Đặt Bàn
                 </a>
             </li>
             <li class="aside__item">
-                <a href="#!" class="aside__link">
+                <a href="/admin/?act=list-user" class="aside__link">
                     <div class="aside__icon">
                         <i class="fa-solid fa-user"></i>
                     </div>
-                    Khách Hàng
+                    Người Dùng
                 </a>
             </li>
             <li class="aside__item">
-                <a href="#!" class="aside__link">
+                <a href="/admin/?act=list-comment" class="aside__link">
                     <div class="aside__icon">
                         <i class="fa-solid fa-comment"></i>
                     </div>
                     Bình Luận
                 </a>
             </li>
-            <li class="aside__item">
+            <!-- <li class="aside__item">
                 <a href="#!" class="aside__link">
                     <div class="aside__icon">
                         <i class="fa-solid fa-chart-simple"></i>
                     </div>
                     Thống Kê
                 </a>
-            </li>
+            </li> -->
             <li class="aside__item">
-                <a href="#!" class="aside__link">
+                <a href="/" class="aside__link">
                     <div class="aside__icon">
-                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-solid fa-arrow-left"></i>
                     </div>
                     Thoát
                 </a>
