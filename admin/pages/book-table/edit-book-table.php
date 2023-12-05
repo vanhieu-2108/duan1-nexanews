@@ -19,6 +19,27 @@
                 <input type="text" value="<?php echo isset($so_nguoi) ? htmlspecialchars($so_nguoi) : '' ?>" name="countperson" class="form-control">
             </div>
             <div class="form-group">
+                <label for="" class="form-label">Chọn Bàn</label>
+                <select required name="table" id="" style="padding: 13px 10px; outline: none;" class="form-control">
+                    <option disabled value="" selected>--Chọn Bàn--</option>
+                    <?php
+                    if ($kieu_ban == 1) {
+                        echo '<option value="1" selected>Bàn Đơn</option>';
+                        echo '<option value="2">Bàn Đôi</option>';
+                        echo '<option value="3">Bàn Dài</option>';
+                    } else if ($kieu_ban == 2) {
+                        echo '<option value="1">Bàn Đơn</option>';
+                        echo '<option value="2" selected>Bàn Đôi</option>';
+                        echo '<option value="3">Bàn Dài</option>';
+                    } else if ($kieu_ban == 3) {
+                        echo '<option value="1">Bàn Đơn</option>';
+                        echo '<option value="2">Bàn Đôi</option>';
+                        echo '<option value="3" selected>Bàn Dài</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="" class="form-label">Ngày</label>
                 <input type="date" value="<?php echo isset($ngay_dat) ? htmlspecialchars($ngay_dat) : '' ?>" name="date" class="form-control">
             </div>
@@ -33,23 +54,23 @@
                     if (isset($trang_thai) && $trang_thai == 0) {
                         echo '
                         <option value="" disabled>Chọn</option>
-                        <option value="0" selected>Chưa Thanh Toán</option>
-                        <option value="1">Đã Thanh Toán</option>
+                        <option value="0" selected>Đang Xử Lí</option>
+                        <option value="1">Đang Đặt Bàn</option>
                         <option value="2">Hủy Đơn</option>
                         ';
                     } else if (isset($trang_thai) && $trang_thai == 1) { {
                             echo '
                         <option value="" disabled>Chọn</option>
-                        <option value="0">Chưa Thanh Toán</option>
-                        <option value="1" selected>Đã Thanh Toán</option>
+                        <option value="0">Đang Xử Lí</option>
+                        <option value="1" selected>Đang Đặt Bàn</option>
                         <option value="2">Hủy Đơn</option>
                         ';
                         }
                     } else {
                         echo '
                         <option value="" disabled>Chọn</option>
-                        <option value="0">Chưa Thanh Toán</option>
-                        <option value="1">Đã Thanh Toán</option>
+                        <option value="0">Đang Xử Lí</option>
+                        <option value="1">Đang Đặt Bàn</option>
                         <option value="2" selected>Hủy Đơn</option>
                         ';
                     }
@@ -138,6 +159,7 @@
             }
             ?>
         </div>
+        <input type="hidden" name="ma_dat_ban" value="<?php echo isset($_GET['id']) ? htmlspecialchars($_GET['id']) : '' ?>">
         <input type="hidden" name="ma_kh" value="<?php echo isset($_GET['ma_kh']) ? htmlspecialchars($_GET['ma_kh']) : '' ?>">
         <input type="hidden" name="mahoadon" value="<?php echo isset($ma_hoa_don) ? htmlspecialchars($ma_hoa_don) : '' ?>">
         <button class="btn" name="update-book-table">Cập Nhật</button>

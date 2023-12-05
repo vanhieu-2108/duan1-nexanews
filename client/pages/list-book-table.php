@@ -9,7 +9,7 @@
                     <th>Ngày Đặt</th>
                     <th>Thời Gian</th>
                     <th>Số Người</th>
-                    <th>Số Bàn</th>
+                    <th>Loại Bàn</th>
                     <th>Tổng Tiền</th>
                     <th>Trạng Thái</th>
                     <th>Hành Động</th>
@@ -23,11 +23,18 @@
                     foreach ($rows as $row) {
                         extract($row);
                         if ($trang_thai == 0) {
-                            $status = '<td style="background-color: #c1a17b;" class="status">Đang Đặt</td>';
+                            $status = '<td style="background-color: gray" class="status">Đang Xử Lí</td>';
                         } else if ($trang_thai == 1) {
-                            $status = '<td style="background-color: green;" class="status">Thành Công</td>';
+                            $status = '<td style="background-color: green;" class="status">Đang Đặt</td>';
                         } else {
                             $status = '<td style="background-color: red;" class="status">Đã Hủy</td>';
+                        }
+                        if ($kieu_ban == 1) {
+                            $kieu_ban = 'Bàn Đơn';
+                        } else if ($kieu_ban == 2) {
+                            $kieu_ban = 'Bàn Đôi';
+                        } else {
+                            $kieu_ban = 'Bàn Dài';
                         }
                         echo  '
                         <tr>
@@ -35,7 +42,7 @@
                             <td>' . $ngay_dat . '</td>
                             <td>' . $gio . '</td>
                             <td>' . $so_nguoi . '</td>
-                            <td>' . $so_ban . '</td>
+                            <td>' .  $kieu_ban  . '</td>
                             <td>' . formatCurrency($tong_tien) . ' đ</td>
                             ' . $status . '
                             <td>

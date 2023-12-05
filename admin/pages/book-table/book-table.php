@@ -20,11 +20,18 @@
                 foreach ($rows as $row) {
                     extract($row);
                     if ($trang_thai == 1) {
-                        $trang_thai = '<p style="padding: 5px; background-color: green; text-align: center; color: #fff" class="status">Đã Thanh Toán</p>';
+                        $trang_thai = '<p style="padding: 5px; background-color: green; text-align: center; color: #fff" class="status">Đang Đặt Bàn</p>';
                     } else if ($trang_thai == 0) {
-                        $trang_thai = '<p style="padding: 5px; background-color: gray; text-align: center; color: #fff" class="status">Chưa Thanh Toán</p>';
+                        $trang_thai = '<p style="padding: 5px; background-color: gray; text-align: center; color: #fff" class="status">Đang Xử Lí</p>';
                     } else {
                         $trang_thai = '<p style="padding: 5px; background-color: red; text-align: center; color: #fff" class="status">Đã Hủy</p>';
+                    }
+                    if ($kieu_ban == 1) {
+                        $kieu_ban = 'Bàn Đơn';
+                    } else if ($kieu_ban == 2) {
+                        $kieu_ban = 'Bàn Đôi';
+                    } else {
+                        $kieu_ban = 'Bàn Dài';
                     }
                     echo '
                     <tr>
@@ -37,7 +44,7 @@
                         <p>Phone: ' . $so_dt . '</p>
                     </td>
                     <td>
-                        <p>Số Bàn: ' . $so_ban . '</p>
+                        <p>Loại Bàn: ' . $kieu_ban . '</p>
                         <p>Ngày Đặt: ' . $ngay_dat . '</p>
                         <p>Giờ Tới: ' . $gio . '</p>
                         <p>Số Người: ' . $so_nguoi . '</p>

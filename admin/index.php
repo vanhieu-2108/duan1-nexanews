@@ -109,34 +109,6 @@ if (isset($_GET['act'])) {
             }
             include('./pages/food/list-food.php');
             break;
-        case 'table':
-            include('./pages/table/table.php');
-            break;
-        case 'add-table':
-            if (isset($_POST['add-table'])) {
-                $soban = $_POST['counttable'];
-                $trangthai = $_POST['status'];
-                insertBan($soban, $trangthai);
-            }
-            include('./pages/table/table.php');
-            break;
-        case 'list-table':
-            $rows = getAllBan();
-            include('./pages/table/list-table.php');
-            break;
-        case 'edit-table':
-            include('./pages/table/edit-table.php');
-            break;
-        case 'update-table':
-            if (isset($_POST['update-table'])) {
-                $maban = $_POST['maban'];
-                $soban = $_POST['counttable'];
-                $trangthai = $_POST['status'];
-                updateBan($soban, $trangthai, $maban,);
-                $rows = getAllBan();
-            }
-            include('./pages/table/list-table.php');
-            break;
         case 'book-table':
             include('./pages/book-table/book-table.php');
             break;
@@ -177,36 +149,18 @@ if (isset($_GET['act'])) {
                 $status = $_POST['status'];
                 $ma_hoa_don = $_POST['mahoadon'];
                 $ma_kh = $_POST['ma_kh'];
+                $choice_table = $_POST['table'];
+                $ma_dat_ban = $_POST['ma_dat_ban'];
                 if (isset($ma_kh)) {
                     updateKhachHang($ma_kh, $ten_kh, $tel, $email);
+                    updateDatBanById($choice_table, $date, $hour, $countperson, $ma_dat_ban);
                 }
                 if ($status == 1) {
                     updateTrangThaiHoaDon(1, $ma_hoa_don);
-                    $row = getHoaDonById($ma_hoa_don);
-                    if (is_array($row)) {
-                        $ma_dat_ban = $row['ma_dat_ban'];
-                        $tableBan = getBanByMaDatBan($ma_dat_ban);
-                        $ma_ban = $tableBan['ma_ban'];
-                        updateTrangThaiBan(0, $ma_ban);
-                    }
                 } else if ($status == 2) {
                     updateTrangThaiHoaDon(2, $ma_hoa_don);
-                    $row = getHoaDonById($ma_hoa_don);
-                    if (is_array($row)) {
-                        $ma_dat_ban = $row['ma_dat_ban'];
-                        $tableBan = getBanByMaDatBan($ma_dat_ban);
-                        $ma_ban = $tableBan['ma_ban'];
-                        updateTrangThaiBan(0, $ma_ban);
-                    }
                 } else {
                     updateTrangThaiHoaDon(0, $ma_hoa_don);
-                    $row = getHoaDonById($ma_hoa_don);
-                    if (is_array($row)) {
-                        $ma_dat_ban = $row['ma_dat_ban'];
-                        $tableBan = getBanByMaDatBan($ma_dat_ban);
-                        $ma_ban = $tableBan['ma_ban'];
-                        updateTrangThaiBan(1, $ma_ban);
-                    }
                 }
                 $checkMenuArr = getMenuById($ma_hoa_don);
                 $filteredItems = filterNonEmptyQuantities($menuItems);
@@ -262,6 +216,9 @@ if (isset($_GET['act'])) {
                 $tel = $_POST['so_dt'];
                 $email = $_POST['email'];
                 $vai_tro = $_POST['vai_tro'];
+                $so_nguoi = $_POST['countperson'];
+                $date = $_POST['date'];
+                $hour = $_POST['hour'];
                 if ($vai_tro == 0 && $_SESSION['user']['ma_kh'] == $ma_kh) {
                     $_SESSION['user']['vai_tro'] = 0;
                     updateUser($ma_kh, $ten_kh, $tel, $email, $vai_tro);

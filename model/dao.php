@@ -250,32 +250,36 @@ function defeleteBan($so_ban)
     return pdo_mutaion($sql, $so_ban);
 }
 
-function insertDatBan($ma_ban, $ma_kh, $ngay_dat, $gio, $songuoi = '1')
+function insertDatBan($choice_table, $ma_kh, $ngay_dat, $gio, $songuoi = '1')
 {
-    $sql = "INSERT INTO dat_ban (ma_ban, ma_kh, ngay_dat, gio, so_nguoi) VALUES (?, ?, ?, ?, ?)";
-    return pdo_mutaion($sql, $ma_ban, $ma_kh, $ngay_dat, $gio, $songuoi);
+    $sql = "INSERT INTO dat_ban (kieu_ban, ma_kh, ngay_dat, gio, so_nguoi) VALUES (?, ?, ?, ?, ?)";
+    return pdo_mutaion($sql, $choice_table, $ma_kh, $ngay_dat, $gio, $songuoi);
 }
 
 function getListDatBan()
 {
     $sql =
-        "SELECT khach_hang.ma_kh, khach_hang.ten_kh, khach_hang.email, khach_hang.so_dt, dat_ban.ngay_dat, dat_ban.gio, dat_ban.so_nguoi, hoa_don.tong_tien, hoa_don.trang_thai, ban.ma_ban, ban.so_ban, dat_ban.ma_dat_ban 
+        "SELECT khach_hang.ma_kh, khach_hang.ten_kh, khach_hang.email, khach_hang.so_dt, dat_ban.ngay_dat, dat_ban.gio, dat_ban.kieu_ban, dat_ban.so_nguoi, hoa_don.tong_tien, hoa_don.trang_thai, dat_ban.ma_dat_ban 
         FROM khach_hang 
         INNER JOIN dat_ban ON khach_hang.ma_kh = dat_ban.ma_kh 
         INNER JOIN hoa_don ON dat_ban.ma_dat_ban = hoa_don.ma_dat_ban 
-        INNER JOIN ban ON dat_ban.ma_ban = ban.ma_ban
         ORDER BY dat_ban.ma_dat_ban DESC;
         ";
     return pdo_querys($sql);
 }
 
+function updateDatBanById($kieu_ban, $ngay_dat, $gio, $so_nguoi, $ma_dat_ban)
+{
+    $sql = "UPDATE dat_ban SET kieu_ban = ?, ngay_dat = ?, gio = ?, so_nguoi = ? WHERE ma_dat_ban = ?";
+    return pdo_mutaion($sql, $kieu_ban, $ngay_dat, $gio, $so_nguoi, $ma_dat_ban);
+}
+
 function getListDatBanById($id)
 {
-    $sql = "SELECT khach_hang.ma_kh, khach_hang.ten_kh, khach_hang.email, khach_hang.so_dt, dat_ban.ngay_dat, dat_ban.gio, dat_ban.so_nguoi, hoa_don.tong_tien, hoa_don.trang_thai, ban.ma_ban, ban.so_ban, dat_ban.ma_dat_ban 
+    $sql = "SELECT khach_hang.ma_kh, khach_hang.ten_kh, khach_hang.email, khach_hang.so_dt, dat_ban.ngay_dat, dat_ban.gio, dat_ban.so_nguoi, hoa_don.tong_tien, hoa_don.trang_thai, dat_ban.ma_dat_ban, dat_ban.kieu_ban 
     FROM khach_hang 
     INNER JOIN dat_ban ON khach_hang.ma_kh = dat_ban.ma_kh 
     INNER JOIN hoa_don ON dat_ban.ma_dat_ban = hoa_don.ma_dat_ban 
-    INNER JOIN ban ON dat_ban.ma_ban = ban.ma_ban
     WHERE khach_hang.ma_kh = ?
     ORDER BY dat_ban.ma_dat_ban DESC";
     return pdo_querys($sql, $id);
@@ -286,11 +290,11 @@ function getListDatBanById($id)
 function getDatBanById($id)
 {
     $sql =
-        "SELECT khach_hang.ma_kh, khach_hang.ten_kh, khach_hang.email, khach_hang.so_dt, dat_ban.ngay_dat, dat_ban.gio, dat_ban.so_nguoi, hoa_don.tong_tien, hoa_don.trang_thai, ban.ma_ban, ban.so_ban, dat_ban.ma_dat_ban, hoa_don.ma_hoa_don 
+        "SELECT khach_hang.ma_kh, khach_hang.ten_kh, khach_hang.email, khach_hang.so_dt, dat_ban.ngay_dat, dat_ban.gio, dat_ban.so_nguoi, hoa_don.tong_tien, hoa_don.trang_thai, dat_ban.ma_dat_ban,dat_ban.kieu_ban, hoa_don.ma_hoa_don 
         FROM khach_hang 
         INNER JOIN dat_ban ON khach_hang.ma_kh = dat_ban.ma_kh 
         INNER JOIN hoa_don ON dat_ban.ma_dat_ban = hoa_don.ma_dat_ban 
-        INNER JOIN ban ON dat_ban.ma_ban = ban.ma_ban WHERE dat_ban.ma_dat_ban = ?;
+        WHERE dat_ban.ma_dat_ban = ?;
     ";
     return pdo_query($sql, $id);
 }

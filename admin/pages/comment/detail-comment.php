@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <td>Têm Món Ăn</td>
-                <td>Tên Khách Hàng</td>
+                <td>Tên Người Bình Luận</td>
                 <td>Ngày Bình Luận</td>
                 <td>Nội Dung</td>
                 <td>Hành Động</td>

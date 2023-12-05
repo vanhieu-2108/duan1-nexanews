@@ -108,18 +108,12 @@
                             <input required type="text" class="book__form-input" name="hour">
                         </div>
                         <div class="book__form-group">
-                            <label for="">Số Bàn</label>
-                            <select required name="quantitytable" id="" style="padding: 13px 10px; outline: none;" class="form-control">
-                                <option disabled value="" selected>--Chọn Số Bàn--</option>
-                                <?php
-                                $rows = getAllBanByStatus(0);
-                                if (is_array($rows)) {
-                                    foreach ($rows as $row) {
-                                        extract($row);
-                                        echo '<option value="' . $ma_ban . '">Bàn Số: ' . $so_ban . '</option>';
-                                    }
-                                }
-                                ?>
+                            <label for="">Chọn Bàn</label>
+                            <select required name="table" id="" style="padding: 13px 10px; outline: none;" class="form-control">
+                                <option disabled value="" selected>--Chọn Bàn--</option>
+                                <option value="1">Bàn Đơn</option>
+                                <option value="2">Bàn Đôi</option>
+                                <option value="3">Bàn Dài</option>
                             </select>
                         </div>
                         <div class="book__form-group">

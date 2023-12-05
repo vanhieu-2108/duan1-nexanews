@@ -87,6 +87,5 @@ if (!empty($_GET['act'])) {
 } else {
     include('./client/pages/home.php');
 }
-
 // Footer
 include('./client/includes/Footer/footer.php');

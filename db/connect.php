@@ -9,13 +9,15 @@ class Database
     public function __construct()
     {
         try {
-            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
+            $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'");
+            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password, $options);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // echo "Connect successfully!";
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
     }
+
     public function getConnection()
     {
         return $this->conn;

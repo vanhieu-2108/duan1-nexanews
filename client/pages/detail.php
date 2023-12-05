@@ -38,7 +38,7 @@ if (isset($_GET['ma_mon_an'])) {
                     <form action="/?act=add-comment" class="wrap-input" method="POST">
                         <div class="group-input">
                             <p class="name"><?php echo $_SESSION['user']['ten_kh'] ?></p>
-                            <input type="text" name="comment" placeholder="Viết bình luận của bạn..." class="input">
+                            <input required type="text" name="comment" placeholder="Viết bình luận của bạn..." class="input">
                         </div>
                         <input type="hidden" name="ma_mon_an" value="<?php echo $ma_mon_an ?>">
                         <button type="submit" name="add-comment" class="btn-submit">Gửi</button>

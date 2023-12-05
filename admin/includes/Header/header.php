@@ -86,14 +86,6 @@
                 </a>
             </li>
             <li class="aside__item">
-                <a href="/admin/?act=table" class="aside__link">
-                    <div class="aside__icon">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                    </div>
-                    Bàn
-                </a>
-            </li>
-            <li class="aside__item">
                 <a href="/admin/?act=book-table" class="aside__link">
                     <div class="aside__icon">
                         <i class="fa-solid fa-book"></i>

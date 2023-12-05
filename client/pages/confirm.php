@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $tel = $_POST['tel'];
     $date = $_POST['date'];
     $hour = $_POST['hour'];
-    $ma_ban = $_POST['quantitytable'];
+    $choice_table = $_POST['table'];
     $ma_kh = $_SESSION['user']['ma_kh'];
     $countperson = $_POST['countperson'];
     $status = 0;
@@ -31,11 +31,14 @@ if (isset($_POST['submit'])) {
             <p>Họ tên: <?php echo $name ?></p>
             <p>Email: <?php echo $email ?></p>
             <p>Phone: <?php echo $tel ?></p>
-            <p>Số Bàn:
+            <p>Loại Bàn:
                 <?php
-                $row = getBanById($ma_ban);
-                if (is_array($row)) {
-                    echo $row['so_ban'];
+                if ($choice_table == 1) {
+                    echo 'Bàn Đơn 4 Người';
+                } else if ($choice_table == 2) {
+                    echo 'Bàn Đôi 8 Người';
+                } else {
+                    echo 'Bàn Dài 16 Người';
                 }
                 ?>
             </p>
@@ -57,7 +60,7 @@ if (isset($_POST['submit'])) {
                 <th>Tổng Tiền</th>
             </tr>
         </thead>
-        <h2 class="sub-heading">Danh Sách Món Ăn</h2>
+        <h2 class="sub-heading">Danh Sách Món Ăn Đặt</h2>
         <tbody>
             <?php
             $sum = 0;
